@@ -1,5 +1,5 @@
 <?php
-	$host = "192.168.23.130"; 
+	$host = "localhost"; 
 	$bdd = "bdd_anti_gaspi"; 
 	$user = "root"; 
 	$mdp = ""; 
