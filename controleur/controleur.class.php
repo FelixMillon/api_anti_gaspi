@@ -66,6 +66,29 @@
 				}
 			
 		}
+
+
+		public static function VerifConnect($email, $token)
+		{
+
+			$redis = new Redis();
+	
+			$redis->connect('127.0.0.1', 6379);
+
+			$Compara = $redis->get(hash('sha256',$email));
+
+			if($Compara == $token){
+				 return '{connect: "ok"}';	
+			}else{
+				return '{"connect":"ko"}';	
+			}
+	
+		}
+
+
+
+
+
 		public static function generateToken ($email)
 		{
 			$token = bin2hex(random_bytes(16));
