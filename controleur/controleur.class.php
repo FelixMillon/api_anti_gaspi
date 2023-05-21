@@ -16,9 +16,8 @@
 		public static function verifConnexionClient ($email, $mdp)
 		{
 			$unClient = null;
-			print("print0");
 			$unClient = Controleur::$unModele->verifConnexionClient ($email, $mdp);
-			print("toto");
+
 			//on va le parser JSon
 				if($unClient == false){
 					return '[{"connect":"denied"}]';					
@@ -48,7 +47,7 @@
 	
 						$redis->connect('127.0.0.1', 6379);
 
-						print("email" + $unClient['email']);
+						print("emailclie" + $unClient['email']);
 
 						$cle = $unClient['email']+"_data";
 
