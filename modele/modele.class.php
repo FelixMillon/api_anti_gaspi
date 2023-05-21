@@ -22,6 +22,7 @@ class Modele
 
 	public function generateToken ($email)
 	{
+		print("là");
 		$token = bin2hex(random_bytes(16));
 
 		$redis = new Redis();

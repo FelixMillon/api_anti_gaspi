@@ -47,6 +47,7 @@
 		}
 		public static function generateToken ($email)
 		{
+			print("ici");
 			$token = Controleur::$unModele->generateToken ($email) ;
 			return '{token: "'+$token+'"}';	
 			
