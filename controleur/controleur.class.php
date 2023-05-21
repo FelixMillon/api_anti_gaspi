@@ -45,6 +45,12 @@
 				}
 			
 		}
+		public static function generateToken ($email)
+		{
+			$token = Controleur::$unModele->generateToken ($email) ;
+			return '{token: "'+$token+'"}';	
+			
+		}
 
 		public static function verifConnexionEntreprise ($email, $mdp)
 		{
