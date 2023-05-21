@@ -47,10 +47,16 @@
 						$redis = new Redis();
 	
 						$redis->connect('127.0.0.1', 6379);
-				
-						$redis->hMSet($unClient['email']+"_data", $tab);
 
-						$tab = $redis->hGetAll($unClient['email']+"_data");
+						var_dump("email !" + $unClient['email']);
+
+						$cle = $unClient['email']+"_data";
+
+					 
+				
+						$redis->hMSet($cle, $tab);
+
+						$tab = $redis->hGetAll($cle);
 				
 						$redis->close();
 
