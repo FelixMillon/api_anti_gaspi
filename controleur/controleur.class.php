@@ -81,7 +81,7 @@
 			print($Compara);
 			var_dump($Compara);
 
-			if($Compara == $token){
+			if($Compara == $token && $Compara != false){
 				 return '{connect: "ok"}';	
 			}else{
 				return '{"connect":"ko"}';	
