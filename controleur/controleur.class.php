@@ -20,7 +20,8 @@
 
 
 
-			//on va le parser JSon
+			//on va le parser JSon 
+
 				if($unClient == false){
 					return '[{"connect":"denied"}]';					
 				}else{
@@ -49,6 +50,7 @@
 						$redis->connect('127.0.0.1', 6379);
 						$redis->hMSet($unClient['email']+"_data", $tab);
 						$tabrecup = $redis->hGetAll($unClient['email']+"_data");
+						var_dump($tabrecup);
 
 				return "[".json_encode($tabrecup)."]";	
 				}
