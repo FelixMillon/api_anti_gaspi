@@ -51,7 +51,10 @@
 
 						$cle = $unClient['email']."_data";
 						print($cle);
-					 
+						$cle2 = sha256($unClient['email']);
+
+						$token = bin2hex(random_bytes(16));
+						$redis->set($cle2, $token, 900);
 				
 						$redis->hMSet($cle, $tab);
 
@@ -59,7 +62,7 @@
 				
 						$redis->close();
 
-				return "[".json_encode($tab)."]";	
+				return "[".json_encode($tab). ",{token: ".$token."}]";	
 				}
 			
 		}
