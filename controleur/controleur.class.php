@@ -16,7 +16,8 @@
 		public static function verifConnexionClient ($email, $mdp)
 		{
 			$unClient = null;
-			$unClient = Controleur::$unModele->verifConnexionClient ($email, $mdp) ;
+			$unClient = Controleur::$unModele->verifConnexionClient ($email, $mdp);
+			print("toto");
 			//on va le parser JSon
 				if($unClient == false){
 					return '[{"connect":"denied"}]';					
