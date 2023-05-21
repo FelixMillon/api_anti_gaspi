@@ -62,7 +62,7 @@
 				
 						$redis->close();
 
-				return "[".json_encode($tab). ",{token: ".$token."}]";	
+				return "[".json_encode($tab).",{token: ".$token."}]";	
 				}
 			
 		}
