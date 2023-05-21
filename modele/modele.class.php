@@ -19,7 +19,6 @@ class Modele
 
 		}
 	}
-
 	public function verifConnexionEntreprise ($email, $mdp)
 	{
 		if ($this->pdo != null)
