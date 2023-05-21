@@ -45,6 +45,21 @@
 				}
 			
 		}
+		public static function generateToken ($email)
+		{
+			$token = bin2hex(random_bytes(16));
+	
+			$redis = new Redis();
+	
+			$redis->connect('127.0.0.1', 6379);
+	
+			$redis->set($email, $token, 900);
+	
+			$redis->close();
+	
+			return '{token: "'+$token+'"}';	
+			
+		}
 
 		public static function verifConnexionEntreprise ($email, $mdp)
 		{
