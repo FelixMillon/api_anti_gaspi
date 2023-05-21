@@ -16,6 +16,7 @@
 		public static function verifConnexionClient ($email, $mdp)
 		{
 			$unClient = null;
+			print("print0");
 			$unClient = Controleur::$unModele->verifConnexionClient ($email, $mdp);
 			print("toto");
 			//on va le parser JSon
@@ -47,7 +48,9 @@
 	
 						$redis->connect('127.0.0.1', 6379);
 				
-						$redis->set("titi", "tata", 900);
+						$redis->hMSet($unClient['email']+"_data", $tab);
+
+						$tab = $redis->hGetAll($unClient['email']+"_data");
 				
 						$redis->close();
 
