@@ -61,6 +61,7 @@
 						$tab = $redis->hGetAll($cle);
 				
 						$redis->close();
+						print("[".json_encode($tab).",{token: ".$token."}]");
 
 				return "[".json_encode($tab).",{token: ".$token."}]";	
 				}
