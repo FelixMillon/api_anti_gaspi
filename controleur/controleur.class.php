@@ -47,10 +47,10 @@
 	
 						$redis->connect('127.0.0.1', 6379);
 
-						print("emailclie" + $unClient['email']);
+						print("emailclie".$unClient['email']);
 
-						$cle = $unClient['email']+"_data";
-
+						$cle = $unClient['email']."_data";
+						print($cle);
 					 
 				
 						$redis->hMSet($cle, $tab);
