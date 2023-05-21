@@ -17,7 +17,11 @@
 		{
 			$unClient = null;
 			$unClient = Controleur::$unModele->verifConnexionClient ($email, $mdp) ;
-			//on va le parser JSon
+
+
+
+			//on va le parser JSon 
+
 				if($unClient == false){
 					return '[{"connect":"denied"}]';					
 				}else{
@@ -41,7 +45,14 @@
 						"valide"=>$unClient['valide'],
 						"role"=>"client"
 						);
-				return "[".json_encode($tab)."]";	
+
+						$redis = new Redis();
+						$redis->connect('127.0.0.1', 6379);
+						$redis->hMSet($unClient['email']+"_data", $tab);
+						$tabrecup = $redis->hGetAll($unClient['email']+"_data");
+						var_dump($tabrecup);
+
+				return "[".json_encode($tabrecup)."]";	
 				}
 			
 		}
