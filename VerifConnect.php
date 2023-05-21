@@ -7,9 +7,7 @@
 	{
 		
 		Controleur::connexion($host, $bdd, $user, $mdp);
-
 		print(Controleur::VerifConnect($email, $token));
-
 	
 	}
 ?>
