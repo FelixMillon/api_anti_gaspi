@@ -77,6 +77,7 @@
 
 			$Compara = $redis->get(hash('sha256',$email));
 			print($Compara);
+			var_dump($Compara);
 
 			if($Compara == $token){
 				 return '{connect: "ok"}';	
