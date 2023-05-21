@@ -41,6 +41,15 @@
 						"valide"=>$unClient['valide'],
 						"role"=>"client"
 						);
+
+						$redis = new Redis();
+	
+						$redis->connect('127.0.0.1', 6379);
+				
+						$redis->set("titi", "tata", 900);
+				
+						$redis->close();
+
 				return "[".json_encode($tab)."]";	
 				}
 			
