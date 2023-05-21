@@ -56,8 +56,9 @@
 			$redis->set($email, $token, 900);
 	
 			$redis->close();
-	
-			return '{token: "'+$token+'"}';	
+			
+			var_dump($token);
+			return '{token: "'.$token.'"}';	
 			
 		}
 
