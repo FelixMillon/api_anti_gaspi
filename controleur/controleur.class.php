@@ -22,6 +22,9 @@
 				if($unClient == false){
 					return '[{"connect":"denied"}]';					
 				}else{
+
+					$token = bin2hex(random_bytes(16));
+
 					$tab=array(
 						"id_client"=>$unClient['id_client'], 
 						"email"=>$unClient['email'],
@@ -40,7 +43,8 @@
 						"role_representant"=>$unClient['role_representant'],
 						"type_cli"=>$unClient['type_cli'],
 						"valide"=>$unClient['valide'],
-						"role"=>"client"
+						"role"=>"client",
+						"token"=>$token
 						);
 
 						$redis = new Redis();
@@ -50,7 +54,6 @@
 						$cle = $unClient['email']."_data";
 						$cle2 = hash('sha256',$unClient['email']);
 
-						$token = bin2hex(random_bytes(16));
 						$redis->set($cle2, $token, 900);
 				
 						$redis->hMSet($cle, $tab);
@@ -60,8 +63,8 @@
 						$redis->close();
 
 
-				return "[".json_encode($tab).",{token: ".$token."}]";	
-			//	return "[".json_encode($tab)."]";	
+			//	return "[".json_encode($tab).",{token: ".$token."}]";	
+				return "[".json_encode($tab)."]";	
 				}
 			
 		}
