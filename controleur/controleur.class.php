@@ -48,12 +48,10 @@
 						$redis->connect('127.0.0.1', 6379);
 
 						$cle = $unClient['email']."_data";
-						print($cle);
 						$cle2 = hash('sha256',$unClient['email']);
 
 						$token = bin2hex(random_bytes(16));
 						$redis->set($cle2, $token, 900);
-						var_dump($token);
 				
 						$redis->hMSet($cle, $tab);
 
