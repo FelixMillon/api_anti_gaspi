@@ -80,9 +80,9 @@
 			$Compara = $redis->get($cle);
 
 			if($Compara == $token && $Compara != false){
-				 return '[{"connect" : "ok"}]';	
+				 return '{"connect" : "ok"}';	
 			}else{
-				return '[{"connect":"ko"}]';	
+				return '{"connect":"ko"}';	
 			}
 	
 		}
