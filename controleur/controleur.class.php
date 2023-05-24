@@ -77,11 +77,7 @@
 	
 			$redis->connect('127.0.0.1', 6379);
 			$cle = hash('sha256',$email);
-			print("cle:".$cle);
-			var_dump("cle:".$cle);
 			$Compara = $redis->get($cle);
-			print($Compara);
-			var_dump($Compara);
 
 			if($Compara == $token && $Compara != false){
 				 return '{connect: "ok"}';	
