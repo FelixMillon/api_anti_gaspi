@@ -9,7 +9,7 @@
 
 		$tab=array(
 		"email"=>$_REQUEST['email'],
-		"mdp"=>$_REQUEST['mdp'], 
+		"mdp"=>hash('sha256',$_REQUEST['mdp']), 
 		"nom"=>$_REQUEST['nom'], 
 		"prenom"=>$_REQUEST['prenom'], 
 		"noteconfemp"=>null, 

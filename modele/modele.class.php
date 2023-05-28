@@ -185,11 +185,7 @@ class Modele
 			":rue"=>$tab["rue"], ":numrue"=>$tab["numrue"], ":ville"=>$tab["ville"], ":cp"=>$tab["cp"], ":siren"=>$tab["siren"], ":libelle"=>$tab["libelle"], 
 			":role_representant"=>$tab["role_representant"], ":type_cli"=>$tab["type_cli"]);
 			$insert = $this->pdo->prepare($requete); 
-			var_dump($insert);
-			var_dump($requete);
-			var_dump($donnees);
 			$insert->execute ($donnees);
-			var_dump($insert);
 			 
 		}
 	}
