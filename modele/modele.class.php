@@ -180,9 +180,10 @@ class Modele
 	{
 		if ($this->pdo != null)
 		{
-			$requete ="insert into client values (null, :email, :mdp, :nom, :prenom, :date_inscription, :noteconfemp, :tel, :rue, :numrue, :ville, :cp, :id_vehicule, :notepublic, :valide );";
-			$donnees=array(":email"=>$tab["email"], ":mdp"=>$tab["mdp"], ":nom"=>$tab["nom"], ":prenom"=>$tab["prenom"], ":date_inscription"=>$tab["date_inscription"], ":noteconfemp"=>$tab["noteconfemp"], ":tel"=>$tab["tel"], 
-			":rue"=>$tab["rue"], ":numrue"=>$tab["numrue"], ":ville"=>$tab["ville"], ":cp"=>$tab["cp"], ":id_vehicule"=>$tab["id_vehicule"], ":notepublic"=>$tab["notepublic"], ":valide"=>$tab["valide"]);
+			$requete ="insert into client values (null, :email, :mdp, :nom, :prenom, sysdate(), null, :tel, :rue, :numrue, :ville, :cp, :siren, :libelle, :role_representant, :type_cli, 'en attente' )";
+			$donnees=array(":email"=>$tab["email"], ":mdp"=>$tab["mdp"], ":nom"=>$tab["nom"], ":prenom"=>$tab["prenom"], ":noteconfemp"=>$tab["noteconfemp"], ":tel"=>$tab["tel"], 
+			":rue"=>$tab["rue"], ":numrue"=>$tab["numrue"], ":ville"=>$tab["ville"], ":cp"=>$tab["cp"], ":siren"=>$tab["siren"], ":libelle"=>$tab["libelle"], 
+			":role_representant"=>$tab["role_representant"], ":type_cli"=>$tab["type_cli"]);
 			$insert = $this->pdo->prepare($requete); 
 			var_dump($requete);
 			var_dump($donnees);

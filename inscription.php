@@ -12,7 +12,6 @@
 		"mdp"=>$_REQUEST['mdp'], 
 		"nom"=>$_REQUEST['nom'], 
 		"prenom"=>$_REQUEST['prenom'], 
-		"date_inscription"=>null, 
 		"noteconfemp"=>null, 
 		"tel"=>$_REQUEST['tel'], 
 		"numrue"=>$_REQUEST['numrue'],
@@ -22,8 +21,7 @@
 		"siren"=>$_REQUEST['siren'],
 		"libelle"=>$_REQUEST['libelle'],
 		"role_representant"=>$_REQUEST['role_representant'],
-		"type_cli"=>$_REQUEST['type_cli'],
-		"valide"=>null);
+		"type_cli"=>$_REQUEST['type_cli']);
 
 		Controleur::connexion($host, $bdd, $user, $mdp);
 		print(Controleur::inscription ($tab));
