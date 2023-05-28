@@ -184,6 +184,8 @@ class Modele
 			$donnees=array(":email"=>$tab["email"], ":mdp"=>$tab["mdp"], ":nom"=>$tab["nom"], ":prenom"=>$tab["prenom"], ":date_inscription"=>$tab["date_inscription"], ":noteconfemp"=>$tab["noteconfemp"], ":tel"=>$tab["tel"], 
 			":rue"=>$tab["rue"], ":numrue"=>$tab["numrue"], ":ville"=>$tab["ville"], ":cp"=>$tab["cp"], ":id_vehicule"=>$tab["id_vehicule"], ":notepublic"=>$tab["notepublic"], ":valide"=>$tab["valide"]);
 			$insert = $this->pdo->prepare($requete); 
+			var_dump($requete);
+			var_dump($donnees);
 			$insert->execute ($donnees);
 			 
 		}
