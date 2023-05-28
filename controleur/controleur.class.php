@@ -20,7 +20,7 @@
 
 			//on va le parser JSon
 				if($unClient == false){
-					return '[{"connect":"denied"}]';					
+					return '{"connect":"denied"}';					
 				}else{
 
 					$token = bin2hex(random_bytes(16));
@@ -64,7 +64,7 @@
 
 
 			//	return "[".json_encode($tab).",{token: ".$token."}]";	
-				return "[".json_encode($tab)."]";	
+				return json_encode($tab);	
 				}
 			
 		}
