@@ -70,6 +70,65 @@
 		}
 
 
+
+		public static function verifConnexionEntreprise ($email, $mdp)
+		{
+			$uneEntreprise = null;
+			$uneEntreprise = Controleur::$unModele->verifConnexionEntreprise ($email, $mdp) ;
+			//on va le parser JSon
+			if($uneEntreprise  == false){
+				return '{"connect":"denied"}';					
+			}else{
+
+				$token = bin2hex(random_bytes(16));
+
+
+				$tab=array(
+					"id_entreprise"=>$uneEntreprise['id_entreprise'], 
+					"email"=>$uneEntreprise['email'],
+					"mdp"=>$uneEntreprise['mdp'],
+					"nom"=>$uneEntreprise['nom'],
+					"prenom"=>$uneEntreprise['prenom'],
+					"date_inscription"=>$uneEntreprise['date_inscription'],
+					"noteconfemp"=>$uneEntreprise['noteconfemp'],
+					"tel"=>$uneEntreprise['tel'],
+					"rue"=>$uneEntreprise['rue'],
+					"numrue"=>$uneEntreprise['numrue'],
+					"ville"=>$uneEntreprise['ville'],
+					"cp"=>$uneEntreprise['cp'],
+					"siret"=>$uneEntreprise['siret'],
+					"libelle"=>$uneEntreprise['libelle'],
+					"notepublic"=>$uneEntreprise['notepublic'],
+					"role_represenant"=>$uneEntreprise['role_represenant'],
+					"type_ent"=>$uneEntreprise['type_ent'],
+					"valide"=>$uneEntreprise['valide'],
+					"role"=>"entreprise",
+					"token"=>$token
+					);
+
+					$redis = new Redis();
+	
+					$redis->connect('127.0.0.1', 6379);
+
+					$cle = $uneEntreprise['email']."_data";
+					$cle2 = hash('sha256',$uneEntreprise['email']);
+
+					$redis->set($cle2, $token, 900);
+			
+					$redis->hMSet($cle, $tab);
+
+					$tab = $redis->hGetAll($cle);
+			
+					$redis->close();
+
+
+					return json_encode($tab);	
+				}
+		}
+
+
+
+
 		public static function VerifConnect($email, $token)
 		{
 
@@ -107,38 +166,7 @@
 			
 		}
 
-		public static function verifConnexionEntreprise ($email, $mdp)
-		{
-			
-			$uneEntreprise = Controleur::$unModele->verifConnexionEntreprise ($email, $mdp) ;
-			//on va le parser JSon
-			if($uneEntreprise  == false){
-				return '[{"connect":"denied"}]';					
-			}else{
-				$tab=array(
-					"id_entreprise"=>$uneEntreprise['id_entreprise'], 
-					"email"=>$uneEntreprise['email'],
-					"mdp"=>$uneEntreprise['mdp'],
-					"nom"=>$uneEntreprise['nom'],
-					"prenom"=>$uneEntreprise['prenom'],
-					"date_inscription"=>$uneEntreprise['date_inscription'],
-					"noteconfemp"=>$uneEntreprise['noteconfemp'],
-					"tel"=>$uneEntreprise['tel'],
-					"rue"=>$uneEntreprise['rue'],
-					"numrue"=>$uneEntreprise['numrue'],
-					"ville"=>$uneEntreprise['ville'],
-					"cp"=>$uneEntreprise['cp'],
-					"siret"=>$uneEntreprise['siret'],
-					"libelle"=>$uneEntreprise['libelle'],
-					"notepublic"=>$uneEntreprise['notepublic'],
-					"role_represenant"=>$uneEntreprise['role_represenant'],
-					"type_ent"=>$uneEntreprise['type_ent'],
-					"valide"=>$uneEntreprise['valide'],
-					"role"=>"client"
-					);
-			return "[".json_encode($tab)."]";
-				}
-		}
+
 
 
 		public static function RecupIdCommande($where)
