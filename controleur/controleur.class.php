@@ -121,7 +121,6 @@
 			
 					$redis->close();
 
-
 					return json_encode($tab);	
 				}
 		}
