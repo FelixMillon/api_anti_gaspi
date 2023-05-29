@@ -49,6 +49,74 @@ class Modele
 		return $select->fetch();
 	}
 
+	public function inscription ($tab)
+	{
+		if ($this->pdo != null)
+		{
+			$requete ="insert into client values (null, :email, :mdp, :nom, :prenom, sysdate(), 2.5, :tel, :rue, :numrue, :ville, :cp, :siren, :libelle, :role_representant, :type_cli, null);";
+			$donnees=array(":email"=>$tab["email"], ":mdp"=>$tab["mdp"], ":nom"=>$tab["nom"], ":prenom"=>$tab["prenom"], ":tel"=>$tab["tel"], 
+			":rue"=>$tab["rue"], ":numrue"=>$tab["numrue"], ":ville"=>$tab["ville"], ":cp"=>$tab["cp"], ":siren"=>$tab["siren"], ":libelle"=>$tab["libelle"], 
+			":role_representant"=>$tab["role_representant"], ":type_cli"=>$tab["type_cli"]);
+			$insert = $this->pdo->prepare($requete); 
+			$insert->execute ($donnees);
+			 
+		}
+	}
+
+
+	
+	public function Insert_produit ($tab)
+	{
+		if ($this->pdo != null)
+		{
+			$requete ="insert into produit values (null, :libelle, :description, :regime_alim, :numrue_depot, :ville_depot, :cp_depot, :prix_base, :reduction, :poids_unite, :note, :quantite, :date_peremption, :id_categorie, :id_entreprise);";
+
+
+			$donnees=array(
+				":libelle"=>$tab['libelle'],
+				":description"=>$tab['description'],
+				":regim_alim"=>$tab['regim_alim'],
+				":numrue_depot"=>$tab['numrue_depot'],
+				":rue_depot"=>$tab['rue_depot'],
+				":ville_depot"=>$tab['ville_depot'],
+				":cp_depot"=>$tab['cp_depot'],
+				":prix_base"=>$tab['prix_base'],
+				":reduction"=>$tab['reduction'],
+				":poids_unite"=>$tab['poids_unite'],
+				":note"=>$tab['note'],
+				":quantite"=>$tab['quantite'],
+				":date_peremption"=>$tab['date_peremption'],
+				":id_categorie"=>$tab['id_categorie'],
+				":id_entreprise"=>$tab['id_entreprise']
+				);
+
+
+
+			$insert = $this->pdo->prepare($requete); 
+			$insert->execute ($donnees);
+			 
+		}
+	}
+
+
+	public function Insert_Cat ($tab)
+	{
+		if ($this->pdo != null)
+		{
+			$requete ="insert into categorie_produit values (null, :libelle, :description);";
+			
+			$donnees=array(
+				":libelle"=>$tab['libelle'],
+				":description"=>$tab['description']);
+
+			$insert = $this->pdo->prepare($requete); 
+			$insert->execute ($donnees);
+			 
+		}
+	}
+
+
+
 
 
 	public function selectAllVehicules()
@@ -187,21 +255,6 @@ class Modele
 			$select->execute($donnees);
 			return  $select->fetchAll(); 
 
-		}
-	}
-
-
-	public function inscription ($tab)
-	{
-		if ($this->pdo != null)
-		{
-			$requete ="insert into client values (null, :email, :mdp, :nom, :prenom, sysdate(), 2.5, :tel, :rue, :numrue, :ville, :cp, :siren, :libelle, :role_representant, :type_cli, null);";
-			$donnees=array(":email"=>$tab["email"], ":mdp"=>$tab["mdp"], ":nom"=>$tab["nom"], ":prenom"=>$tab["prenom"], ":tel"=>$tab["tel"], 
-			":rue"=>$tab["rue"], ":numrue"=>$tab["numrue"], ":ville"=>$tab["ville"], ":cp"=>$tab["cp"], ":siren"=>$tab["siren"], ":libelle"=>$tab["libelle"], 
-			":role_representant"=>$tab["role_representant"], ":type_cli"=>$tab["type_cli"]);
-			$insert = $this->pdo->prepare($requete); 
-			$insert->execute ($donnees);
-			 
 		}
 	}
 

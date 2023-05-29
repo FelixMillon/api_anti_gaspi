@@ -352,6 +352,20 @@
 			return '["ok":"1"]';
 		}
 
+		public static function Insert_produit ($tab)
+		{
+			Controleur::$unModele->Insert_produit($tab); 
+			return '["ok":"1"]';
+		}
+
+
+		public static function Insert_Cat ($tab)
+		{
+			Controleur::$unModele->Insert_Cat($tab); 
+			return '["ok":"1"]';
+		}
+
+
 		public static function Insert_commenter($tab, $where)
 		{
 			Controleur::$unModele->Insert_commenter ($tab, $where); 
