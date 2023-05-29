@@ -94,6 +94,9 @@ class Modele
 
 			$insert = $this->pdo->prepare($requete); 
 			$insert->execute ($donnees);
+			var_dump($insert);
+
+			var_dump($donnees);
 			 
 		}
 	}
