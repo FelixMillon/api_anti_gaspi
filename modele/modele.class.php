@@ -184,7 +184,7 @@ class Modele
 	{
 		if ($this->pdo != null)
 		{
-			$requete = "select p.*, c.libelle as lib from produit p, categorie_produit c where c.id_categorie = p.id_categorie and id_entreprise = :id_entreprise ;"; 
+			$requete = "select p.*, c.libelle as lib from produit p, categorie_produit c where c.id_categorie = p.id_categorie and c.id_entreprise = :id_entreprise ;"; 
 			$select = $this->pdo->prepare($requete);
 			$donnees = array(":id_entreprise"=>$id_entreprise); 
 			$select->execute($donnees);
