@@ -69,25 +69,25 @@ class Modele
 	{
 		if ($this->pdo != null)
 		{
-			$requete ="insert into produit values (null, :libelle, :description, :regime_alim, :numrue_depot, :ville_depot, :cp_depot, :prix_base, :reduction, :poids_unite, :note, :quantite, :date_peremption, :id_categorie, :id_entreprise);";
+			$requete ="insert into produit values (null, :libelle, :description, :regime_alim, :numrue_depot, :rue_depot, :ville_depot, :cp_depot, :prix_base, :reduction, :poids_unite, :note, :quantite, :date_peremption, :id_categorie, :id_entreprise);";
 
 
 			$donnees=array(
-				":libelle"=>$tab['libelle'],
-				":description"=>$tab['description'],
-				":regim_alim"=>$tab['regim_alim'],
-				":numrue_depot"=>$tab['numrue_depot'],
-				":rue_depot"=>$tab['rue_depot'],
-				":ville_depot"=>$tab['ville_depot'],
-				":cp_depot"=>$tab['cp_depot'],
-				":prix_base"=>$tab['prix_base'],
-				":reduction"=>$tab['reduction'],
-				":poids_unite"=>$tab['poids_unite'],
-				":note"=>$tab['note'],
-				":quantite"=>$tab['quantite'],
-				":date_peremption"=>$tab['date_peremption'],
-				":id_categorie"=>$tab['id_categorie'],
-				":id_entreprise"=>$tab['id_entreprise']
+				":libelle"=>$tab["libelle"],
+				":description"=>$tab["description"],
+				":regim_alim"=>$tab["regim_alim"],
+				":numrue_depot"=>$tab["numrue_depot"],
+				":rue_depot"=>$tab["rue_depot"],
+				":ville_depot"=>$tab["ville_depot"],
+				":cp_depot"=>$tab["cp_depot"],
+				":prix_base"=>$tab["prix_base"],
+				":reduction"=>$tab["reduction"],
+				":poids_unite"=>$tab["poids_unite"],
+				":note"=>$tab["note"],
+				":quantite"=>$tab["quantite"],
+				":date_peremption"=>$tab["date_peremption"],
+				":id_categorie"=>$tab["id_categorie"],
+				":id_entreprise"=>$tab["id_entreprise"]
 				);
 
 
