@@ -75,7 +75,7 @@ class Modele
 			$donnees=array(
 				":libelle"=>$tab["libelle"],
 				":description"=>$tab["description"],
-				":regim_alim"=>$tab["regim_alim"],
+				":regime_alim"=>$tab["regime_alim"],
 				":numrue_depot"=>$tab["numrue_depot"],
 				":rue_depot"=>$tab["rue_depot"],
 				":ville_depot"=>$tab["ville_depot"],
@@ -93,11 +93,7 @@ class Modele
 
 
 			$insert = $this->pdo->prepare($requete); 
-			$insert->execute ($donnees);
-			var_dump($insert);
-
-			var_dump($donnees);
-			 
+			$insert->execute ($donnees);	 
 		}
 	}
 
