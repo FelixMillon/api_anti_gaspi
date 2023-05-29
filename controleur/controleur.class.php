@@ -260,6 +260,24 @@
 			return json_encode($tab);
 		}
 
+
+		public static function selectCatProd($id_entreprise)
+		{
+			$lesCats = Controleur::$unModele->selectCatProd($id_entreprise);
+			//parser les resultats en Json 
+			$tab= array(); 
+			foreach ($lesCats as $uneCat) {
+					$ligne = array(
+						"id_categorie"=>$uneCat['id_categorie'],
+						"libelle"=>$uneCat['libelle'],
+						"description"=>$uneCat['description']
+					);
+				$tab[] = $ligne ;
+			}
+			return json_encode($tab);
+		}
+
+
 		public static function selectHistoCommandes($id_livreur)
 		{
 			$lesVehicules = Controleur::$unModele->selectHistoCommandes($id_livreur);
