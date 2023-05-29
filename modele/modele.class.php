@@ -102,11 +102,12 @@ class Modele
 	{
 		if ($this->pdo != null)
 		{
-			$requete ="insert into categorie_produit values (null, :libelle, :description);";
+			$requete ="insert into categorie_produit values (null, :libelle, :description, :id_entreprise);";
 			
 			$donnees=array(
 				":libelle"=>$tab['libelle'],
-				":description"=>$tab['description']);
+				":description"=>$tab['description'],
+				":id_entreprise"=>$tab['id_entreprise']);
 
 			$insert = $this->pdo->prepare($requete); 
 			$insert->execute ($donnees);
@@ -285,18 +286,7 @@ class Modele
 	}
 
 
-	public function insert_vehicule ($tab)
-	{
-		if ($this->pdo != null)
-		{
-			$requete ="insert into vehicule values (2, :immatriculation, :poids_max, :annee_fabrication, :volume, :energie, :cons_100_km, :id_type_vehicule);";
-			$donnees=array(":immatriculation"=>$tab["immatriculation"], ":poids_max"=>$tab["poids_max"], ":annee_fabrication"=>$tab["annee_fabrication"], ":volume"=>$tab["volume"], ":energie"=>$tab["energie"], 
-			":cons_100_km"=>$tab["cons_100_km"], ":id_type_vehicule"=>$tab["id_type_vehicule"]);
-			$insert = $this->pdo->prepare($requete); 
-			$insert->execute ($donnees);
-			 
-		}
-	}
+
 	
 	public function CreateCommande ($tabcom)
 	{
