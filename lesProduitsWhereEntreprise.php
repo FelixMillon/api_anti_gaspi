@@ -4,12 +4,8 @@
 
 	if (isset($_REQUEST['id_entreprise']))
 	{
-
-		
-	$where=array("id_entreprise"=> $_REQUEST['id_entreprise']);
-
 	Controleur::connexion($host, $bdd, $user, $mdp);
-	print(Controleur::selectAllProduitsWhere($where));
+	print(Controleur::selectAllProduitsWhere($_REQUEST['id_entreprise']));
 
 	}
 ?>
