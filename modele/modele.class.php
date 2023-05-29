@@ -208,7 +208,7 @@ class Modele
 	{
 		if ($this->pdo != null)
 		{
-			$requete = "select distinct(c.id_categorie), c.libelle, c.description from categorie_produit c, produit p where c.id_categorie = p.id_categorie and p.id_entreprise = :id_entreprise ;"; 
+			$requete = "select * from categorie_produit where id_entreprise = :id_entreprise ;"; 
 			$select = $this->pdo->prepare($requete);
 			$donnees = array(":id_entreprise"=>$id_entreprise); 
 			$select->execute($donnees);
