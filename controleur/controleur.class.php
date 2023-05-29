@@ -207,10 +207,10 @@
 		}
 
 
-		public static function selectAllProduitsWhere($where)
+		public static function selectAllProduitsWhere($id_entreprise)
 		{
 			
-			$lesVehicules = Controleur::$unModele->selectAllProduitsWhere ($where); 
+			$lesVehicules = Controleur::$unModele->selectAllProduitsWhere ($id_entreprise); 
 			//parser les resultats en Json 
 			
 			$tab= array(); 

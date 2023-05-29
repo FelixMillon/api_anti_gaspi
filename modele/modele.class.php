@@ -115,10 +115,6 @@ class Modele
 		}
 	}
 
-
-
-
-
 	public function selectAllVehicules()
 	{
 		if ($this->pdo != null)
@@ -183,25 +179,19 @@ class Modele
 		return $select->fetchAll();
 	}
 
-	public function selectAllProduitsWhere($where)
+
+	public function selectAllProduitsWhere($id_entreprise)
 	{
-		$donnees = array();
-		$champs=array();
-		foreach($where as $cle => $valeur)
+		if ($this->pdo != null)
 		{
-			$champs[] = $cle." = :".$cle;
-			$donnees[":".$cle] = $valeur;
+			$requete = "select p.*, c.libelle as lib from produit p, categorie_produit c where c.id_categorie = p.id_categorie and id_entreprise = :id_entreprise ;"; 
+			$select = $this->pdo->prepare($requete);
+			$donnees = array(":id_entreprise"=>$id_entreprise); 
+			$select->execute($donnees);
+			return  $select->fetchAll();
 		}
-		$chaineWhere = implode(" and ", $champs);
-		
-		$requete="select p.*, c.libelle as lib from produit p, categorie_produit c where c.id_categorie = p.id_categorie and ".$chaineWhere;
-		$select=$this->pdo->prepare($requete);
-		$select->execute($donnees);
-		return $select->fetchAll();
-	}
+	}	
 
-
-	
 
 	
 
