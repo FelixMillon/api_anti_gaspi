@@ -6,7 +6,7 @@
 	{
 
 		
-	$where=array("id_entreprise"=> $_REQUEST['id_entreprise']);
+	$where=array("c.id_entreprise"=> $_REQUEST['id_entreprise']);
 
 	Controleur::connexion($host, $bdd, $user, $mdp);
 	print(Controleur::selectAllProduitsWhere($where));
