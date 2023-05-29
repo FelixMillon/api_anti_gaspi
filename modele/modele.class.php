@@ -261,7 +261,7 @@ class Modele
 	{
 		if ($this->pdo != null)
 		{
-			$requete = "select * from categorie_produit where id_categorie = :id_categorie;"; 
+			$requete = "delete from categorie_produit where id_categorie = :id_categorie;"; 
 			$select = $this->pdo->prepare($requete);
 			$donnees = array(":id_categorie"=>$id_categorie); 
 			$select->execute($donnees);
