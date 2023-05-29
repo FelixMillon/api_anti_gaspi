@@ -366,6 +366,19 @@
 		}
 
 
+		public static function Update_cat($tab, $where)
+		{
+			Controleur::$unModele->Update_cat($tab, $where); 
+			return '["ok":"1"]';
+		}
+
+		public static function Update_produit($tab, $where)
+		{
+			Controleur::$unModele->Update_produit ($tab, $where); 
+			return '["ok":"1"]';
+		}
+
+
 		public static function Insert_commenter($tab, $where)
 		{
 			Controleur::$unModele->Insert_commenter ($tab, $where); 
