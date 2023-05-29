@@ -422,6 +422,18 @@
 			return '["ok":"1"]';
 		}
 
+		public static function Delete_Cat($id_categorie)
+		{
+			Controleur::$unModele->Delete_Cat($id_categorie); 
+			return '["ok":"1"]';
+		}
+
+		public static function Delete_Produit($id_produit)
+		{
+			Controleur::$unModele->Delete_Produit($id_produit); 
+			return '["ok":"1"]';
+		}
+
 		public static function delete_vehicule ( $where)
 		{
 			Controleur::$unModele->delete_vehicule($where); 

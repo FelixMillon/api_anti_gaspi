@@ -257,6 +257,34 @@ class Modele
 		}
 	}
 
+	public function Delete_Cat($id_categorie)
+	{
+		if ($this->pdo != null)
+		{
+			$requete = "select * from categorie_produit where id_categorie = :id_categorie;"; 
+			$select = $this->pdo->prepare($requete);
+			$donnees = array(":id_categorie"=>$id_categorie); 
+			$select->execute($donnees);
+			return  $select->fetchAll(); 
+
+		}
+	}
+
+
+	public function Delete_Produit($id_produit)
+	{
+		if ($this->pdo != null)
+		{
+			$requete = "delete from produit where id_produit = :id_produit;"; 
+			$select = $this->pdo->prepare($requete);
+			$donnees = array(":id_produit"=>$id_produit); 
+			$select->execute($donnees);
+			return  $select->fetchAll(); 
+
+		}
+	}
+
+
 	public function insert_vehicule ($tab)
 	{
 		if ($this->pdo != null)
