@@ -230,6 +230,7 @@
 					"poids_unite"=>$unVehicule['poids_unite'],
 					"note"=>$unVehicule['note'],
 					"quantite"=>$unVehicule['quantite'],
+					"date_peremption"=>$unVehicule['date_peremption'],
 					"id_categorie"=>$unVehicule['id_categorie'],
 					"id_entreprise"=>$unVehicule['id_entreprise']
 				);
