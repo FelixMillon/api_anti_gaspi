@@ -3,17 +3,14 @@
 	require_once ("modele/config_bdd.php");
 
 
-	if (isset($_REQUEST['id']))
-	{
 		
 		Controleur::connexion($host, $bdd, $user, $mdp);
-		$email = $_REQUEST['email']; 
-		$mdp = hash('sha256',$_REQUEST['mdp']); 
+
+
 		if($_REQUEST['role'] == "client" ){
 			print(Controleur::getClient ($id));
 		}else if($_REQUEST['role'] == "entreprise" ){
 			print(Controleur::getEntreprise ($id));
 		}
 	
-	}
 ?>
