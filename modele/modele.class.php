@@ -37,9 +37,9 @@ class Modele
 	{
 		if ($this->pdo != null)
 		{
-			$requete = "select * from client where id_client= :id ;";
+			$requete = "select * from client where id_client = :id ;";
 			$select = $this->pdo->prepare($requete); 
-			$donnees = array(":email"=>$email, ":mdp"=>$mdp); 
+			$donnees = array(":id"=>$id); 
 			$select->execute ($donnees);
 			return  $select->fetch (); 
 
@@ -54,7 +54,7 @@ class Modele
 		{
 			$requete = "select * from entreprise where id_entreprise = :id ;";
 			$select = $this->pdo->prepare($requete); 
-			$donnees = array(":email"=>$email, ":mdp"=>$mdp); 
+			$donnees = array(":id"=>$id); 
 			$select->execute ($donnees);
 			return  $select->fetch (); 
 
