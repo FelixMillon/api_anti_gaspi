@@ -32,6 +32,38 @@ class Modele
 		}
 	}
 
+
+	public function getClient ($id)
+	{
+		if ($this->pdo != null)
+		{
+			$requete = "select * from client where id_client= :id ;";
+			$select = $this->pdo->prepare($requete); 
+			$donnees = array(":email"=>$email, ":mdp"=>$mdp); 
+			$select->execute ($donnees);
+			return  $select->fetch (); 
+
+		}
+	}
+
+
+	
+	public function getEntreprise ($id)
+	{
+		if ($this->pdo != null)
+		{
+			$requete = "select * from entreprise where id_entreprise = :id ;";
+			$select = $this->pdo->prepare($requete); 
+			$donnees = array(":email"=>$email, ":mdp"=>$mdp); 
+			$select->execute ($donnees);
+			return  $select->fetch (); 
+
+		}
+	}
+
+
+
+
 	public function RecupIdCommande($where)
 	{
 		$donnees = array();

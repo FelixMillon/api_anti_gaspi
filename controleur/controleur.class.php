@@ -71,6 +71,102 @@
 
 
 
+		public static function getClient ($id)
+		{
+			$unClient = null;
+			$unClient = Controleur::$unModele->verifConnexionClient($id);
+
+			//on va le parser JSon
+				if($unClient == false){
+					return '{"connect":"denied"}';					
+				}else{
+
+					$redis = new Redis();
+
+					$redis->connect('127.0.0.1', 6379);
+					$cle = hash('sha256',$email);
+					$token = $redis->get($cle);
+	
+
+					$tab=array(
+						"id_client"=>$unClient['id_client'], 
+						"email"=>$unClient['email'],
+						"mdp"=>$unClient['mdp'],
+						"nom"=>$unClient['nom'],
+						"prenom"=>$unClient['prenom'],
+						"date_inscription"=>$unClient['date_inscription'],
+						"noteconfemp"=>$unClient['noteconfemp'],
+						"tel"=>$unClient['tel'],
+						"rue"=>$unClient['rue'],
+						"numrue"=>$unClient['numrue'],
+						"ville"=>$unClient['ville'],
+						"cp"=>$unClient['cp'],
+						"siren"=>$unClient['siren'],
+						"libelle"=>$unClient['libelle'],
+						"role_representant"=>$unClient['role_representant'],
+						"type_cli"=>$unClient['type_cli'],
+						"valide"=>$unClient['valide'],
+						"role"=>"client",
+						"token"=>$token
+						);
+
+			//	return "[".json_encode($tab).",{token: ".$token."}]";	
+				return json_encode($tab);	
+				}
+			
+		}
+
+
+
+
+
+		public static function getEntreprise ($id)
+		{
+			$uneEntreprise = null;
+			$uneEntreprise = Controleur::$unModele->verifConnexionEntreprise ($id);
+			//on va le parser JSon
+			if($uneEntreprise  == false){
+				return '{"connect":"denied"}';					
+			}else{
+				
+				$redis = new Redis();
+
+				$redis->connect('127.0.0.1', 6379);
+				$cle = hash('sha256',$email);
+				$token = $redis->get($cle);
+
+
+				$tab=array(
+					"id_entreprise"=>$uneEntreprise['id_entreprise'], 
+					"email"=>$uneEntreprise['email'],
+					"mdp"=>$uneEntreprise['mdp'],
+					"nom"=>$uneEntreprise['nom'],
+					"prenom"=>$uneEntreprise['prenom'],
+					"date_inscription"=>$uneEntreprise['date_inscription'],
+					"noteconfemp"=>$uneEntreprise['noteconfemp'],
+					"tel"=>$uneEntreprise['tel'],
+					"rue"=>$uneEntreprise['rue'],
+					"numrue"=>$uneEntreprise['numrue'],
+					"ville"=>$uneEntreprise['ville'],
+					"cp"=>$uneEntreprise['cp'],
+					"siret"=>$uneEntreprise['siret'],
+					"libelle"=>$uneEntreprise['libelle'],
+					"notepublic"=>$uneEntreprise['notepublic'],
+					"role_represenant"=>$uneEntreprise['role_represenant'],
+					"type_ent"=>$uneEntreprise['type_ent'],
+					"valide"=>$uneEntreprise['valide'],
+					"role"=>"entreprise",
+					"token"=>$token
+				);
+
+
+					return json_encode($tab);	
+				}
+		}
+
+
+
+
 		public static function verifConnexionEntreprise ($email, $mdp)
 		{
 			$uneEntreprise = null;
