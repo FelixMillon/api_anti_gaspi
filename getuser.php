@@ -3,7 +3,7 @@
 	require_once ("modele/config_bdd.php");
 
 
-	if (isset($_REQUEST['email']))
+	if (isset($_REQUEST['id']))
 	{
 		
 		Controleur::connexion($host, $bdd, $user, $mdp);
