@@ -41,6 +41,7 @@ class Modele
 			$select = $this->pdo->prepare($requete); 
 			$donnees = array(":id"=>$id); 
 			$select->execute ($donnees);
+			console.log($donnees);
 			return  $select->fetch (); 
 
 		}
@@ -56,6 +57,7 @@ class Modele
 			$select = $this->pdo->prepare($requete); 
 			$donnees = array(":id"=>$id); 
 			$select->execute ($donnees);
+			console.log($donnees);
 			return  $select->fetch (); 
 
 		}
