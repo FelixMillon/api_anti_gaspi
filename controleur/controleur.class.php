@@ -74,7 +74,7 @@
 		public static function getClient ($id)
 		{
 			$unClient = null;
-			$unClient = Controleur::$unModele->verifConnexionClient($id);
+			$unClient = Controleur::$unModele->getClient($id);
 
 			//on va le parser JSon
 				if($unClient == false){
@@ -123,7 +123,7 @@
 		public static function getEntreprise ($id)
 		{
 			$uneEntreprise = null;
-			$uneEntreprise = Controleur::$unModele->verifConnexionEntreprise ($id);
+			$uneEntreprise = Controleur::$unModele->getEntreprise ($id);
 			//on va le parser JSon
 			if($uneEntreprise  == false){
 				return '{"connect":"denied"}';					
