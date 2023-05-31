@@ -377,6 +377,40 @@ class Modele
 
 
 
+	public function Update_user($tab, $where)
+	{
+		if ($this->pdo != null)
+		{
+			$donnees=array();
+			$champs2=array();
+			foreach ($tab as $cle => $valeur)
+			{
+				if($valeur != "" or $valeur=="0000-00-00"){
+					$champs2[] = $cle." = :".$cle;
+					$donnees[":".$cle] = $valeur;
+				}        
+			}
+			$chaineChamps = implode(",",$champs2);
+			$champs=array();
+			foreach($where as $cle => $valeur)
+			{
+				$champs[] = $cle." = :".$cle;
+				$donnees[":".$cle] = $valeur;
+			}
+			$chaineWhere = implode(" and ", $champs);
+			$requete ="update utilisateur set ".$chaineChamps."  where ".$chaineWhere;
+
+			$update = $this->pdo->prepare($requete);
+			$update->execute($donnees);
+
+		}
+	}
+
+
+
+
+
+
 
 	public function Insert_commenter($tab, $where)
 	{

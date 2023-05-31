@@ -372,6 +372,15 @@
 			return '["ok":"1"]';
 		}
 
+
+		public static function Update_user($tab, $where)
+		{
+			Controleur::$unModele->Update_user($tab, $where); 
+			return '["ok":"1"]';
+		}
+
+
+
 		public static function Update_produit($tab, $where)
 		{
 			Controleur::$unModele->Update_produit ($tab, $where); 
